@@ -1,0 +1,16 @@
+
+[0m[0m
+[0m  matchRequires[0m
+[ { line: 1,
+    variable: '',
+    module: 'a-b-c',
+    original: 'require(\'a-b-c\');' },
+  { line: 2,
+    variable: 'fooBar',
+    module: 'foo-bar',
+    original: 'var fooBar = require(\'foo-bar\');' } ]
+  [31m  1) should match requires[0m
+
+
+[92m [0m[32m 0 passing[0m[90m (12ms)[0m
+
