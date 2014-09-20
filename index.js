@@ -12,21 +12,17 @@ var stripComments = require('strip-comments');
 
 
 module.exports = function (str) {
-  str = stripComments(str).replace(/\r/g, '');
-  var context = [];
+  str = stripComments(str).split(/[\r?\n]/g);
 
-  str.split(/\n/g).forEach(function(line, i) {
-    line = line.replace(/^\s+/, '');
-    i = i + 1;
-
+  return str.reduce(function (acc, line, i) {
     if (regex().exec(line)) {
-      context.push({
-        line: i,
+      acc.push({
+        line: i + 1,
         variable: RegExp.$2,
         module: RegExp.$3,
         original: line
       });
     }
-  });
-  return context.filter(Boolean);
+    return acc;
+  }, []);
 };
