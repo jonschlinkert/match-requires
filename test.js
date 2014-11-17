@@ -8,11 +8,11 @@
 'use strict';
 
 var should = require('should');
-var re = require('./');
+var req = require('./');
 
 describe('matchRequires', function () {
   it('should return an array of matching require statements:', function () {
-    var actual = re('require(\'a-b-c\');\nvar fooBar = require(\'foo-bar\');');
+    var actual = req('require(\'a-b-c\');\nvar fooBar = require(\'foo-bar\');');
     actual.should.eql([{
       line: 1,
       variable: '',
@@ -28,7 +28,7 @@ describe('matchRequires', function () {
   });
 
   it('should ignore statements in code comments:', function () {
-    var actual = re('/*require(\'a-b-c\');*/\nvar fooBar = require(\'foo-bar\');');
+    var actual = req('/*require(\'a-b-c\');*/\nvar fooBar = require(\'foo-bar\');');
     actual.should.eql([{
       line: 1,
       variable: 'fooBar',

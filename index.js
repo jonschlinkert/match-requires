@@ -10,9 +10,9 @@
 var regex = require('requires-regex');
 var stripComments = require('strip-comments');
 
-
 module.exports = function (str) {
-  str = stripComments(str).split(/[\r?\n]/g);
+  str = str.replace(/\r/g, '');
+  str = stripComments(str).split(/\n/g);
 
   return str.reduce(function (acc, line, i) {
     if (regex().exec(line)) {
