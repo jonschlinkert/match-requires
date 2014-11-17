@@ -12,17 +12,24 @@ var stripComments = require('strip-comments');
 
 module.exports = function (str) {
   str = str.replace(/\r/g, '');
-  str = stripComments(str).split(/\n/g);
 
-  return str.reduce(function (acc, line, i) {
-    if (regex().exec(line)) {
-      acc.push({
-        line: i + 1,
-        variable: RegExp.$2,
-        module: RegExp.$3,
+  var lines = stripComments(str).split(/\n/g);
+  var len = lines.length;
+  var i = 0;
+  var arr = [];
+  var match;
+
+  while (len--) {
+    var line = lines[i++];
+    if (match = regex().exec(line)) {
+      arr = arr.concat({
+        line: i,
+        variable: match[2] || '',
+        module: match[3],
         original: line
       });
     }
-    return acc;
-  }, []);
+  }
+
+  return arr;
 };
