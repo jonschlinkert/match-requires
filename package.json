@@ -1,7 +1,7 @@
 {
   "name": "match-requires",
   "description": "Match require statements in a string. Returns an array of matching require statements. Each match is an object with line number, variable name, and module name. Statements in code comments are ignored.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/jonschlinkert/match-requires",
   "author": {
     "name": "Jon Schlinkert",
@@ -27,10 +27,13 @@
   "scripts": {
     "test": "mocha -R spec"
   },
+  "dependencies": {
+    "requires-regex": "^0.1.1",
+    "strip-comments": "^0.3.2"
+  },
   "devDependencies": {
     "mocha": "*",
-    "should": "^4.0.4",
-    "verb": ">= 0.2.6"
+    "should": "^4.0.4"
   },
   "keywords": [
     "analyze",
@@ -59,9 +62,5 @@
     "source",
     "statement",
     "test"
-  ],
-  "dependencies": {
-    "requires-regex": "^0.1.1",
-    "strip-comments": "^0.3.2"
-  }
+  ]
 }
