@@ -8,12 +8,20 @@
 'use strict';
 
 var regex = require('requires-regex');
-var stripComments = require('strip-comments');
 
-module.exports = function (str) {
+module.exports = function (str, stripComments) {
   str = str.replace(/\r/g, '');
 
-  var lines = stripComments(str).split(/\n/g);
+  if (stripComments === true) {
+    var strip = require('strip-comments');
+    str = strip(str);
+  }
+
+  if (typeof stripComments === 'function') {
+    str = stripComments(str);
+  }
+
+  var lines = str.split(/\n/g);
   var len = lines.length;
   var i = 0;
   var arr = [];

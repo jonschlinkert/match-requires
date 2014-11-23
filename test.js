@@ -28,12 +28,22 @@ describe('matchRequires', function () {
   });
 
   it('should ignore statements in code comments:', function () {
-    var actual = req('/*require(\'a-b-c\');*/\nvar fooBar = require(\'foo-bar\');');
+    var actual = req('/*require(\'a-b-c\');*/\nvar fooBar = require(\'foo-bar\');', true);
     actual.should.eql([{
       line: 1,
       variable: 'fooBar',
       module: 'foo-bar',
       original: 'var fooBar = require(\'foo-bar\');'
+    }]);
+  });
+
+  it('should parse require statements in methods:', function () {
+    var actual = req('this.helper(\'copyright\', require(\'helper-copyright\'))');
+    actual.should.eql([{
+      line: 1,
+      variable: '',
+      module: 'helper-copyright',
+      original: 'this.helper(\'copyright\', require(\'helper-copyright\'))'
     }]);
   });
 });
