@@ -1,0 +1,1 @@
+module.exports = ['do {\n  var bar = require("a").test(s)\n}\n\nwhile(false)'];

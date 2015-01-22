@@ -1,0 +1,1 @@
+module.exports = ['this.helper(\'copyright\', require(\'helper-copyright\'))'];

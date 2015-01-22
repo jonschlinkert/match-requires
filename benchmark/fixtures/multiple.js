@@ -1,0 +1,1 @@
+module.exports = ['var foo = require("a");\n\nvar bar = require("./b/c.js");\nrequire("baz")\nrequire(\'a-b-c\');\nvar fooBar = require(\'foo-bar\');'];

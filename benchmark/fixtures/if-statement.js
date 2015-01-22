@@ -1,0 +1,1 @@
+module.exports = ['var foo;\nif(bar) { \nvar foo = require("a"); }\n'];
