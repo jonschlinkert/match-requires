@@ -1,7 +1,7 @@
 /*!
  * match-requires <https://github.com/jonschlinkert/match-requires>
  *
- * Copyright (c) 2014 Jon Schlinkert, contributors.
+ * Copyright (c) 2014-2015, Jon Schlinkert.
  * Licensed under the MIT License
  */
 
@@ -9,9 +9,7 @@
 
 var regex = require('requires-regex');
 
-module.exports = function (str, stripComments) {
-  str = str.replace(/\r/g, '');
-
+module.exports = function matchRequires(str, stripComments) {
   if (stripComments === true) {
     var strip = require('strip-comments');
     str = strip(str);
@@ -21,16 +19,16 @@ module.exports = function (str, stripComments) {
     str = stripComments(str);
   }
 
-  var lines = str.split(/\n/g);
+  var lines = str.split('\n');
   var len = lines.length;
   var i = 0;
-  var arr = [];
+  var res = [];
   var match;
 
   while (len--) {
     var line = lines[i++];
     if (match = regex().exec(line)) {
-      arr = arr.concat({
+      res.push({
         line: i,
         variable: match[2] || '',
         module: match[3],
@@ -39,5 +37,5 @@ module.exports = function (str, stripComments) {
     }
   }
 
-  return arr;
+  return res;
 };
