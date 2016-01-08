@@ -11,8 +11,7 @@ var regex = require('requires-regex');
 
 module.exports = function matchRequires(str, stripComments) {
   if (stripComments === true) {
-    var strip = require('strip-comments');
-    str = strip(str);
+    str = require('strip-comments')(str);
   }
 
   if (typeof stripComments === 'function') {
