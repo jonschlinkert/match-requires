@@ -20,7 +20,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "requires-regex": "^0.3.1",
+    "requires-regex": "^0.3.3",
     "strip-comments": "^0.4.3"
   },
   "devDependencies": {
