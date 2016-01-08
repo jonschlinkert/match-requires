@@ -1,7 +1,7 @@
 {
   "name": "match-requires",
   "description": "Match require statements in a string. Returns an array of matching require statements. Each match is an object with line number, variable name, and module name. Statements in code comments are ignored.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/jonschlinkert/match-requires",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/match-requires",
@@ -20,14 +20,15 @@
     "test": "mocha"
   },
   "dependencies": {
-    "requires-regex": "^0.2.0",
-    "strip-comments": "^0.3.2"
+    "requires-regex": "^0.3.1",
+    "strip-comments": "^0.4.3"
   },
   "devDependencies": {
     "benchmarked": "^0.1.3",
     "chalk": "^0.5.1",
     "crequire": "^1.5.3",
     "detective": "^4.0.0",
+    "gulp-format-md": "^0.1.4",
     "mocha": "*",
     "should": "*"
   },
@@ -61,7 +62,13 @@
   ],
   "verb": {
     "related": {
-      "list": []
-    }
+      "list": [
+        "requires-regex"
+      ]
+    },
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "layout": "default"
   }
 }
