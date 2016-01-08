@@ -15,12 +15,14 @@ describe('matchRequires', function () {
   it('should return an array of matching require statements:', function () {
     var actual = req('require(\'a-b-c\');\nvar fooBar = require(\'foo-bar\');');
     actual.should.eql([{
+      col: 0,
       line: 1,
       variable: '',
       module: 'a-b-c',
       original: 'require(\'a-b-c\');'
     },
     {
+      col: 0,
       line: 2,
       variable: 'fooBar',
       module: 'foo-bar',
@@ -31,7 +33,8 @@ describe('matchRequires', function () {
   it('should ignore statements in code comments:', function () {
     var actual = req('/*require(\'a-b-c\');*/\nvar fooBar = require(\'foo-bar\');', true);
     actual.should.eql([{
-      line: 1,
+      col: 0,
+      line: 2,
       variable: 'fooBar',
       module: 'foo-bar',
       original: 'var fooBar = require(\'foo-bar\');'
@@ -41,6 +44,7 @@ describe('matchRequires', function () {
   it('should parse require statements in methods:', function () {
     var actual = req('this.helper(\'copyright\', require(\'helper-copyright\'))');
     actual.should.eql([{
+      col: 25,
       line: 1,
       variable: '',
       module: 'helper-copyright',

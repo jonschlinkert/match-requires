@@ -23,15 +23,18 @@ module.exports = function matchRequires(str, stripComments) {
   var len = lines.length;
   var i = 0;
   var res = [];
+  var re = regex();
   var match;
 
   while (len--) {
     var line = lines[i++];
-    if (match = regex().exec(line)) {
+    var match = re.exec(line);
+    if (match) {
       res.push({
         line: i,
-        variable: match[2] || '',
-        module: match[3],
+        col: match.index,
+        variable: match[1] || '',
+        module: match[2],
         original: line
       });
     }
