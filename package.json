@@ -1,7 +1,7 @@
 {
   "name": "match-requires",
   "description": "Match require statements in a string. Returns an array of matching require statements. Each match is an object with line number, variable name, and module name. Statements in code comments are ignored.",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "homepage": "https://github.com/jonschlinkert/match-requires",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/match-requires",
