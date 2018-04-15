@@ -6,8 +6,33 @@ var match = require('./');
 
 describe('matchRequires', function() {
   it('should return an array of matching require statements', function() {
-    var actual = match("require('a-b-c');\nvar fooBar = require('foo-bar');");
-    assert.deepEqual(actual, [
+    assert.deepEqual(match("require('a-b-c');\nvar fooBar = require('foo-bar');"), [
+      {
+        variable: '',
+        name: 'a-b-c',
+        string: "require('a-b-c');"
+      },
+      {
+        variable: 'fooBar',
+        name: 'foo-bar',
+        string: "var fooBar = require('foo-bar');"
+      }
+    ]);
+
+    assert.deepEqual(match("\nrequire('a-b-c');\nvar fooBar = require('foo-bar');"), [
+      {
+        variable: '',
+        name: 'a-b-c',
+        string: "require('a-b-c');"
+      },
+      {
+        variable: 'fooBar',
+        name: 'foo-bar',
+        string: "var fooBar = require('foo-bar');"
+      }
+    ]);
+
+    assert.deepEqual(match("require('a-b-c');var fooBar = require('foo-bar');"), [
       {
         variable: '',
         name: 'a-b-c',

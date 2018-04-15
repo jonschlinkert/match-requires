@@ -9,7 +9,9 @@
 
 var re = require('requires-regex');
 
-module.exports = function matchRequires(str, options = {}) {
+module.exports = function matchRequires(str, options) {
+  options = options || {};
+
   if (typeof options === 'boolean' || typeof options === 'function') {
     options = { stripComments: options };
   }
@@ -30,12 +32,13 @@ module.exports = function matchRequires(str, options = {}) {
     if (!match[4]) continue;
     var tok = { string: match[0].trim(), variable: match[2] || '', name: match[4] };
 
-    Reflect.defineProperty(tok, 'match', {
+    Object.defineProperty(tok, 'match', {
       enumerable: false,
       value: match
     });
 
     matches.push(tok);
   }
+
   return matches;
 };
