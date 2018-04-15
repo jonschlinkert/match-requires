@@ -101,7 +101,9 @@ $ npm install -g verbose/verb#dev verb-generate-readme && verb
 
 You might also be interested in these projects:
 
-[requires-regex](https://www.npmjs.com/package/requires-regex): Regular expression for matching javascript require statements. | [homepage](https://github.com/jonschlinkert/requires-regex "Regular expression for matching javascript require statements.")
+* [requires-regex](https://www.npmjs.com/package/requires-regex): Regular expression for matching javascript require statements. | [homepage](https://github.com/jonschlinkert/requires-regex "Regular expression for matching javascript require statements.")
+* [to-regex-range](https://www.npmjs.com/package/to-regex-range): Pass two numbers, get a regex-compatible source string for matching ranges. Validated against more than… [more](https://github.com/micromatch/to-regex-range) | [homepage](https://github.com/micromatch/to-regex-range "Pass two numbers, get a regex-compatible source string for matching ranges. Validated against more than 2.78 million test assertions.")
+* [year-range-regex](https://www.npmjs.com/package/year-range-regex): Generates a regular expression for validating a range of years. | [homepage](https://github.com/jonschlinkert/year-range-regex "Generates a regular expression for validating a range of years.")
 
 ### Author
 
