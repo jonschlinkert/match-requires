@@ -1,11 +1,7 @@
 'use strict';
 
-var Suite = require('benchmarked');
-var suite = new Suite({
-  result: false,
-  fixtures: 'fixtures/*.js',
-  add: 'code/*.js',
-  cwd: __dirname
-});
+const suite = require('benchmarked');
 
-suite.run();
+suite.run({code: `code/*.js`, fixtures: `fixtures/*.js`})
+  .then(stats => console.log(suite.render(stats)))
+  .catch(console.error);
