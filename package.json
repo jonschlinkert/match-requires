@@ -20,17 +20,15 @@
     "test": "mocha"
   },
   "dependencies": {
-    "requires-regex": "^0.3.3",
-    "strip-comments": "^0.4.3"
+    "requires-regex": "^1.0.2",
+    "strip-comments": "^1.0.1"
   },
   "devDependencies": {
-    "benchmarked": "^0.1.3",
-    "chalk": "^0.5.1",
-    "crequire": "^1.5.3",
-    "detective": "^4.0.0",
-    "gulp-format-md": "^0.1.4",
-    "mocha": "*",
-    "should": "*"
+    "crequire": "^1.8.1",
+    "detective": "^5.1.0",
+    "benchmarked": "^2.0.0",
+    "gulp-format-md": "^1.0.0",
+    "mocha": "^3.5.3"
   },
   "keywords": [
     "analyze",
@@ -61,14 +59,23 @@
     "test"
   ],
   "verb": {
-    "related": {
-      "list": [
-        "requires-regex"
-      ]
-    },
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
     "plugins": [
       "gulp-format-md"
     ],
-    "layout": "default"
+    "related": {
+      "list": [
+        "requires-regex",
+        "to-regex-range",
+        "year-range-regex"
+      ]
+    },
+    "lint": {
+      "reflinks": true
+    }
   }
 }

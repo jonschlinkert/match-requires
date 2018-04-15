@@ -1,43 +1,41 @@
 /*!
  * match-requires <https://github.com/jonschlinkert/match-requires>
  *
- * Copyright (c) 2014-2015, Jon Schlinkert.
- * Licensed under the MIT License
+ * Copyright (c) 2014-2018, Jon Schlinkert.
+ * Released under the MIT License.
  */
 
 'use strict';
 
-var regex = require('requires-regex');
+var re = require('requires-regex');
 
-module.exports = function matchRequires(str, stripComments) {
-  if (stripComments === true) {
-    str = require('strip-comments')(str);
+module.exports = function matchRequires(str, options = {}) {
+  if (typeof options === 'boolean' || typeof options === 'function') {
+    options = { stripComments: options };
   }
 
-  if (typeof stripComments === 'function') {
-    str = stripComments(str);
+  if (options.stripComments === true) {
+    str = require('strip-comments')(str, options);
   }
 
-  var lines = str.split('\n');
-  var len = lines.length;
-  var i = 0;
-  var res = [];
-  var re = regex();
-  var match;
-
-  while (len--) {
-    var line = lines[i++];
-    var match = re.exec(line);
-    if (match) {
-      res.push({
-        line: i,
-        col: match.index,
-        variable: match[1] || '',
-        module: match[2],
-        original: line
-      });
-    }
+  if (typeof options.stripComments === 'function') {
+    str = options.stripComments(str);
   }
 
-  return res;
+  var matches = [];
+  var regex = re();
+  let match;
+
+  while ((match = regex.exec(str))) {
+    if (!match[4]) continue;
+    var tok = { string: match[0].trim(), variable: match[2] || '', name: match[4] };
+
+    Reflect.defineProperty(tok, 'match', {
+      enumerable: false,
+      value: match
+    });
+
+    matches.push(tok);
+  }
+  return matches;
 };
