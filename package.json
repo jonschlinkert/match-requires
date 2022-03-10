@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "requires-regex": "^1.0.4",
-    "strip-comments": "^1.0.1"
+    "strip-comments": "^2.0.1"
   },
   "devDependencies": {
     "crequire": "^1.8.1",
